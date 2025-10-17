@@ -7,16 +7,37 @@
 // const PORT = process.env.PORT || 3000;
 // const router = require("./routers/authrouter");
 
-// // ✅ Secure and specific CORS setup
+// // ✅ Enhanced CORS setup to fix preflight issues
 // const corsOptions = {
-//   origin: "https://aiteg-solutions-com.vercel.app", // Your frontend domain
+//   origin: [
+//     "https://aiteg-solutions-com.vercel.app",
+//     "https://aiteg-solutions-com-eqb5.vercel.app",
+//     "http://localhost:3000",
+//     "http://localhost:5173"
+//   ],
 //   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 //   allowedHeaders: ["Content-Type", "Authorization"],
 //   credentials: true,
+//   optionsSuccessStatus: 204
 // };
 
 // app.use(cors(corsOptions));
-// app.options("*", cors(corsOptions)); // ✅ handle preflight requests
+
+// // Ensure CORS headers are present for all routes
+// app.use((req, res, next) => {
+//   const origin = req.headers.origin;
+//   if (corsOptions.origin.includes(origin)) {
+//     res.setHeader('Access-Control-Allow-Origin', origin);
+//   }
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//   res.setHeader('Access-Control-Allow-Credentials', 'true');
+//   
+//   if (req.method === 'OPTIONS') {
+//     return res.status(204).end();
+//   }
+//   next();
+// });
 
 // app.use(express.json());
 // app.use("/auth", router);
@@ -47,22 +68,37 @@ const PORT = process.env.PORT || 3000;
 // Import routes
 const router = require("./routers/authrouter");
 
-// ===============================
-// ✅ CORS Configuration
-// ===============================
+// ✅ Enhanced CORS setup to fix preflight issues
 const corsOptions = {
-  origin: "https://aiteg-solutions-com.vercel.app", // your frontend domain
+  origin: [
+    "https://aiteg-solutions-com.vercel.app",
+    "https://aiteg-solutions-com-eqb5.vercel.app",
+    "http://localhost:3000",
+    "http://localhost:5173"
+  ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
-  optionsSuccessStatus: 200, // fix for some browsers (legacy)
+  optionsSuccessStatus: 204
 };
 
-// Apply CORS middleware globally
 app.use(cors(corsOptions));
 
-// Handle preflight requests
-app.options("*", cors(corsOptions));
+// Ensure CORS headers are present for all routes
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (corsOptions.origin.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+
+  if (req.method === 'OPTIONS') {
+    return res.status(204).end();
+  }
+  next();
+});
 
 // ===============================
 // ✅ Middleware
@@ -74,9 +110,7 @@ app.use(express.json());
 // ===============================
 app.use("/auth", router);
 
-// ===============================
-// ✅ MongoDB Connection
-// ===============================
+// ✅ MongoDB connection
 mongoose
   .connect(process.env.MONGO || "mongodb://127.0.0.1:27017/mydb", {
     useNewUrlParser: true,
@@ -85,16 +119,6 @@ mongoose
   .then(() => console.log("✅ Connected to MongoDB"))
   .catch((err) => console.error("❌ MongoDB connection error:", err));
 
-// ===============================
-// ✅ Root Route (for testing)
-// ===============================
-app.get("/", (req, res) => {
-  res.send("🚀 Backend is running successfully!");
-});
-
-// ===============================
-// ✅ Start Server
-// ===============================
 app.listen(PORT, () => {
-  console.log(`🚀 Server is running on port ${PORT}`);
+  console.log(`🚀 Server is running at http://localhost:${PORT}`);
 });
