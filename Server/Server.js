@@ -7,13 +7,15 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const router = require("./routers/authrouter");
 
-const corsOptions = {
-  origin: "https://aiteg-solutions-com.vercel.app", // ✅ no trailing slash
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true,
-};
-
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: true, // Allow all origins
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+    exposedHeaders: ["Content-Range", "X-Content-Range"],
+  })
+);
 app.use(express.json());
 app.use("/auth", router);
 
