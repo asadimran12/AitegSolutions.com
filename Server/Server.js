@@ -1,26 +1,22 @@
 const express = require("express");
 const mongoose = require("mongoose");
-// Import the 'cors' package
 const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
 const router = require("./routers/authrouter");
 
-app.use(cors());
+const corsOptions = {
+  origin: "https://aiteg-solutions-com.vercel.app", // ✅ no trailing slash
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+};
 
-app.use(
-  cors({
-    origin: "https://aiteg-solutions-com.vercel.app",
-  })
-);
-
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/auth", router);
 
-// MongoDB connection
 mongoose
   .connect(process.env.MONGO || "mongodb://127.0.0.1:27017/mydb", {
     useNewUrlParser: true,
