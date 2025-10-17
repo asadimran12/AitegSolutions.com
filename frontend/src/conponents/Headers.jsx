@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
-import logo from "../assets/Logo.png";
+import mainLogo from "../assets/Logo.png";
+import headerLogo1 from "../assets/Header1.png";
+import headerLogo2 from "../assets/Header2.png";
 
 const Headers = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -21,12 +23,23 @@ const Headers = () => {
   return (
     <header className="bg-white sticky top-0 z-50 shadow-md transition-all duration-300">
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
-        {/* 🔹 Logo Section */}
+        
+        {/* 🔹 Logo Section (3 logos side by side) */}
         <Link to="/" className="flex items-center space-x-3">
           <img
-            src={logo}
-            alt="Academia Logo"
+            src={headerLogo1}
+            alt="Header Logo 1"
+            className="h-10 w-auto object-contain"
+          />
+          <img
+            src={mainLogo}
+            alt="Main Logo"
             className="h-12 w-auto object-contain"
+          />
+          <img
+            src={headerLogo2}
+            alt="Header Logo 2"
+            className="h-10 w-auto object-contain"
           />
         </Link>
 
@@ -74,7 +87,9 @@ const Headers = () => {
       {/* 🔹 Mobile Navigation Menu */}
       <div
         className={`md:hidden bg-white shadow-md absolute top-[72px] left-0 w-full transition-all duration-300 ease-in-out ${
-          menuOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-5"
+          menuOpen
+            ? "opacity-100 visible translate-y-0"
+            : "opacity-0 invisible -translate-y-5"
         }`}
       >
         <nav className="flex flex-col items-center space-y-4 py-5 text-lg font-medium">
