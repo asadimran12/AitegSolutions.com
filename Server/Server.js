@@ -73,6 +73,8 @@ const corsOptions = {
   origin: [
     "https://aiteg-solutions-com.vercel.app",
     "https://aiteg-solutions-com-eqb5.vercel.app",
+    "https://aiteg-solutions-com-git-main-asad-imrans-projects-a798e3ab.vercel.app/",
+    "https://aiteg-solutions-892d94nti-asad-imrans-projects-a798e3ab.vercel.app/",
     "http://localhost:3000",
     "http://localhost:5173"
   ],
