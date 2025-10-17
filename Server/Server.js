@@ -101,6 +101,7 @@ app.use((req, res, next) => {
   }
   next();
 });
+console.log("CORS middleware configured.");
 
 // ===============================
 // ✅ Middleware
