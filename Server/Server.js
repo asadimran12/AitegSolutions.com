@@ -13,7 +13,7 @@ app.use(cors());
 
 app.use(
   cors({
-    origin: "https://aiteg-solutions-com.vercel.app/",
+    origin: "https://aiteg-solutions-com.vercel.app",
   })
 );
 
