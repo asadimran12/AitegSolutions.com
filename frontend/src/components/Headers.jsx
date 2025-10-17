@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import mainLogo from "../assets/Logo.png";
 import headerLogo1 from "../assets/Header1.png";
-import headerLogo2 from "../assets/Header2.png";
+import headerLogo2 from "../assets/header2.png";
 
 const Headers = () => {
   const [menuOpen, setMenuOpen] = useState(false);
