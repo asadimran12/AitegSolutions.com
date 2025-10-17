@@ -41,7 +41,7 @@ const Contactus = () => {
     setStatus({ message: "Sending...", type: "sending" });
 
     try {
-      const response = await fetch("http://localhost:3000/auth/contactus", {
+      const response = await fetch("https://aiteg-solutions-com-eqb5.vercel.app/auth/contactus", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
