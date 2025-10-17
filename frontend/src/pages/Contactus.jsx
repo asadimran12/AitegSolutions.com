@@ -43,6 +43,7 @@ const Contactus = () => {
     try {
       const response = await fetch("https://aiteg-solutions-com-eqb5.vercel.app/auth/contactus", {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
