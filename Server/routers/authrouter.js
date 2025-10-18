@@ -35,7 +35,7 @@ router.post("/contactus", async(req, res) => {
     await transporter.sendMail(mailOptions);
     console.log(newMessage)
 
-    res.status(201).json({ message: "Message sent successfully" });
+    res.status(200).json({ message: "Message sent successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
