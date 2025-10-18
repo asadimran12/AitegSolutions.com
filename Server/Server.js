@@ -11,13 +11,11 @@ const router = require("./routers/authrouter");
 
 // ✅ Simplified & correct CORS setup
 const allowedOrigins = [
-  "https://aiteg-solutions-com.vercel.app",
-  "https://aiteg-solutions-com-eqb5.vercel.app",
-  "https://aiteg-solutions-com-git-main-asad-imrans-projects-a798e3ab.vercel.app",
-  "https://aiteg-solutions-892d94nti-asad-imrans-projects-a798e3ab.vercel.app",
-  "http://localhost:3000",
-  "http://localhost:5173"
+  "https://aiteg-solutions-com.vercel.app",  // ✅ frontend
+  "https://aiteg-solutions-com-eqb5.vercel.app", // ✅ backend itself (optional)
+  "http://localhost:5173", // ✅ for local dev
 ];
+
 
 const corsOptions = {
   origin: (origin, callback) => {
