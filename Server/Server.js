@@ -7,27 +7,29 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const router = require("./routers/authrouter");
 
-// ✅ Strict and clean CORS setup
-app.use(
-  cors({
-    origin: [
-      "https://aiteg-solutions-com.vercel.app", // frontend
-      "http://localhost:5173", // local dev
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  })
-);
+const allowedOrigins = [
+  "https://aiteg-solutions-com.vercel.app",
+  "http://localhost:5173",
+];
 
-// ✅ Handle preflight (OPTIONS) globally
-app.options("*", (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://aiteg-solutions-com.vercel.app");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  return res.sendStatus(200);
-});
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.log("❌ CORS blocked origin:", origin);
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+// ✅ Apply this before routes
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
+
 
 app.use(express.json());
 
