@@ -32,7 +32,7 @@ const Contactus = () => {
     }
 
     setStatus({ message: "Sending...", type: "sending" });
-
+    console.log(formData)
     try {
       const response = await axios.post(
         "https://aiteg-solutions-com-eqb5.vercel.app/auth/contactus",
