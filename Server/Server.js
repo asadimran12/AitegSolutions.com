@@ -34,6 +34,21 @@ app.use(cors(corsOptions));
 app.options("*", cors(corsOptions));
 app.use(express.json());
 
+// ✅ Manual Preflight Handler (fixes “preflight request failed” error)
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://aiteg-solutions-com.vercel.app");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.header("Access-Control-Allow-Credentials", "true");
+
+  // ✅ Respond to preflight requests immediately
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
+
+  next();
+});
+
 // ✅ Routes
 app.use("/auth", router);
 
