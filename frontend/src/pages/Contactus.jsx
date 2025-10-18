@@ -40,6 +40,7 @@ const Contactus = () => {
 
     setStatus({ message: "Sending...", type: "sending" });
 
+    console.log(formData)
     try {
       const response = await fetch("https://aiteg-api.vercel.app/auth/contactus", {
         method: "POST",
