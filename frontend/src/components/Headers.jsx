@@ -15,6 +15,7 @@ const Headers = () => {
     { name: "Courses", path: "/courses" },
     { name: "Gallery", path: "/gallery" },
     { name: "FAQ", path: "/faq" },
+    { name: "Contact Us", path: "/contact" }, // ✅ Added here for mobile
   ];
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
@@ -23,8 +24,7 @@ const Headers = () => {
   return (
     <header className="bg-white sticky top-0 z-50 shadow-md transition-all duration-300">
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
-        
-        {/* 🔹 Logo Section (3 logos side by side) */}
+        {/* 🔹 Logo Section */}
         <Link to="/" className="flex items-center space-x-3">
           <img
             src={headerLogo1}
@@ -45,32 +45,34 @@ const Headers = () => {
 
         {/* 🔹 Desktop Navigation */}
         <nav className="hidden md:flex space-x-8 text-base font-medium">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={link.path}
-              className={`relative transition-colors duration-300 ${
-                location.pathname === link.path
-                  ? "text-[#02C6C8]"
-                  : "text-gray-700"
-              } hover:text-[#02C6C8]`}
-            >
-              {link.name}
-              <span
-                className={`absolute left-0 -bottom-1 h-[2px] bg-[#02C6C8] transition-all duration-300 ${
+          {navLinks
+            .filter((link) => link.name !== "Contact Us") // hide in desktop nav
+            .map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                className={`relative transition-colors duration-300 ${
                   location.pathname === link.path
-                    ? "w-full"
-                    : "w-0 hover:w-full"
-                }`}
-              ></span>
-            </Link>
-          ))}
+                    ? "text-[#02C6C8]"
+                    : "text-gray-700"
+                } hover:text-[#02C6C8]`}
+              >
+                {link.name}
+                <span
+                  className={`absolute left-0 -bottom-1 h-[2px] bg-[#02C6C8] transition-all duration-300 ${
+                    location.pathname === link.path
+                      ? "w-full"
+                      : "w-0 hover:w-full"
+                  }`}
+                ></span>
+              </Link>
+            ))}
         </nav>
 
-        {/* 🔹 Contact Button (Desktop) */}
+        {/* 🔹 Contact Button (Desktop Only) */}
         <Link
           to="/contact"
-          className="border border-[#02C6C8] text-[#02C6C8] px-5 py-2 rounded-full font-medium hover:bg-[#02C6C8] hover:text-white transition duration-300"
+          className="hidden md:inline-block border border-[#02C6C8] text-[#02C6C8] px-5 py-2 rounded-full font-medium hover:bg-[#02C6C8] hover:text-white transition duration-300"
         >
           Contact Us
         </Link>
