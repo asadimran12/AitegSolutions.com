@@ -111,8 +111,7 @@ const Contactus = () => {
               <div>
                 <h4 className="text-lg font-semibold text-gray-900">Our Location</h4>
                 <p className="text-gray-600 leading-relaxed">
-                  Near Australian IELTS, PTE Academy,
-                  <br /> Shalimar Town, Phalia, Punjab, Pakistan
+                  Shalimar Town, Phalia, Punjab, Pakistan
                 </p>
               </div>
             </div>
@@ -121,7 +120,7 @@ const Contactus = () => {
               <MdEmail className="text-3xl text-[#02C6C8]" />
               <div>
                 <h4 className="text-lg font-semibold text-gray-900">Email Address</h4>
-                <p className="text-gray-600">info@aitegacademy.pk</p>
+                <p className="text-gray-600">ssanjum6m@gmail.com</p>
               </div>
             </div>
 
@@ -129,7 +128,7 @@ const Contactus = () => {
               <MdPhone className="text-3xl text-[#02C6C8]" />
               <div>
                 <h4 className="text-lg font-semibold text-gray-900">Phone Number</h4>
-                <p className="text-gray-600">+92 3XX-XXXXXXX</p>
+                <p className="text-gray-600">+92-41-1599845</p>
               </div>
             </div>
           </div>

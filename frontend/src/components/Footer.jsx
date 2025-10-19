@@ -60,7 +60,7 @@ const Footer = () => {
             </li>
             <li className="flex items-center gap-3">
               <MdEmail className="text-[#02C6C8] text-lg" />
-              <span>ssanjum67m@gmail.com</span>
+              <span>ssanjum6m@gmail.com</span>
             </li>
             <li className="flex items-center gap-3">
               <MdPhone className="text-[#02C6C8] text-lg" />
