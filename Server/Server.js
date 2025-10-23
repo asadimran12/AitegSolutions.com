@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 const router = require("./routers/authrouter");
 
 const allowedOrigins = [
-  "https://aiteg-solutions-com.vercel.app",
+  "https://www.aitegacademy.com",
   "http://localhost:5173",
 ];
 
