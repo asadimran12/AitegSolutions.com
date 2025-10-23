@@ -16,7 +16,6 @@ const Headers = () => {
     { name: "Gallery", path: "/gallery" },
     { name: "FAQ", path: "/faq" },
     { name: "Contact Us", path: "/contact" },
-   { name: "Asad", path: "/contact" },
   ];
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
