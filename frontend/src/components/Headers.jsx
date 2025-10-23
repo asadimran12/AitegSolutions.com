@@ -15,7 +15,8 @@ const Headers = () => {
     { name: "Courses", path: "/courses" },
     { name: "Gallery", path: "/gallery" },
     { name: "FAQ", path: "/faq" },
-    { name: "Contact Us", path: "/contact" }, // ✅ Added here for mobile
+    { name: "Contact Us", path: "/contact" },
+   { name: "Asad", path: "/contact" },
   ];
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
