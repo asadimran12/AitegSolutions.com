@@ -33,7 +33,6 @@ const officeImages = [
   },
 ];
 
-
 // --- Modal Component ---
 // A dedicated component for the lightbox view to keep the code clean.
 const ImageModal = ({ image, onClose, onNext, onPrev }) => {
@@ -51,25 +50,49 @@ const ImageModal = ({ image, onClose, onNext, onPrev }) => {
   if (!image) return null;
 
   return (
-    <div 
+    <div
       className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 transition-opacity duration-300"
       onClick={onClose}
     >
-      <div className="relative bg-white rounded-lg shadow-2xl max-w-4xl w-11/12 max-h-[90vh] overflow-hidden flex flex-col" onClick={(e) => e.stopPropagation()}>
-        <img src={image.src} alt={image.alt} className="w-full h-auto object-contain flex-shrink-0" style={{ maxHeight: 'calc(90vh - 4rem)' }} />
-        <p className="text-center p-4 bg-gray-50 text-gray-800 font-medium">{image.alt}</p>
+      <div
+        className="relative bg-white rounded-lg shadow-2xl max-w-4xl w-11/12 max-h-[90vh] overflow-hidden flex flex-col"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <img
+          src={image.src}
+          alt={image.alt}
+          className="w-full h-auto object-contain flex-shrink-0"
+          style={{ maxHeight: "calc(90vh - 4rem)" }}
+        />
+        <p className="text-center p-4 bg-gray-50 text-gray-800 font-medium">
+          {image.alt}
+        </p>
       </div>
 
       {/* Close Button */}
-      <button onClick={onClose} className="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 transition-colors">&times;</button>
-      
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 transition-colors"
+      >
+        &times;
+      </button>
+
       {/* Navigation Buttons */}
-      <button onClick={onPrev} className="absolute left-4 top-1/2 -translate-y-1/2 text-white text-5xl hover:text-gray-300 transition-colors">&#8249;</button>
-      <button onClick={onNext} className="absolute right-4 top-1/2 -translate-y-1/2 text-white text-5xl hover:text-gray-300 transition-colors">&#8250;</button>
+      <button
+        onClick={onPrev}
+        className="absolute left-4 top-1/2 -translate-y-1/2 text-white text-5xl hover:text-gray-300 transition-colors"
+      >
+        &#8249;
+      </button>
+      <button
+        onClick={onNext}
+        className="absolute right-4 top-1/2 -translate-y-1/2 text-white text-5xl hover:text-gray-300 transition-colors"
+      >
+        &#8250;
+      </button>
     </div>
   );
 };
-
 
 // --- Main Gallery Component ---
 const Gallery = () => {
@@ -77,15 +100,17 @@ const Gallery = () => {
 
   const openModal = (index) => setCurrentImageIndex(index);
   const closeModal = () => setCurrentImageIndex(null);
-  
+
   const showNextImage = (e) => {
-    if(e) e.stopPropagation();
+    if (e) e.stopPropagation();
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % officeImages.length);
   };
 
   const showPrevImage = (e) => {
-    if(e) e.stopPropagation();
-    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + officeImages.length) % officeImages.length);
+    if (e) e.stopPropagation();
+    setCurrentImageIndex(
+      (prevIndex) => (prevIndex - 1 + officeImages.length) % officeImages.length
+    );
   };
 
   return (
@@ -98,7 +123,7 @@ const Gallery = () => {
           A glimpse into the spaces where innovation and learning come to life.
         </p>
       </div>
-      
+
       {/* Dynamic Masonry Grid Layout */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {officeImages.map((image, index) => (
@@ -107,8 +132,8 @@ const Gallery = () => {
             onClick={() => openModal(index)}
             className={`group relative overflow-hidden rounded-xl shadow-lg cursor-pointer
               transition-all duration-500 ease-in-out hover:shadow-2xl hover:scale-105
-              ${index === 0 ? 'col-span-2 row-span-2' : ''}
-              ${index === 3 || index === 4 ? 'md:col-span-2' : ''}
+              ${index === 0 ? "col-span-2 row-span-2" : ""}
+              ${index === 3 || index === 4 ? "md:col-span-2" : ""}
             `}
           >
             <img
@@ -118,9 +143,11 @@ const Gallery = () => {
               className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
             />
             {/* Subtle overlay that slides up on hover */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent p-4 flex items-end
+            <div
+              className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent p-4 flex items-end
                            opacity-0 group-hover:opacity-100 transition-all duration-500
-                           transform translate-y-8 group-hover:translate-y-0">
+                           transform translate-y-8 group-hover:translate-y-0"
+            >
               <p className="text-white text-base font-semibold transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
                 {image.alt}
               </p>
@@ -128,9 +155,9 @@ const Gallery = () => {
           </div>
         ))}
       </div>
-      
+
       {currentImageIndex !== null && (
-        <ImageModal 
+        <ImageModal
           image={officeImages[currentImageIndex]}
           onClose={closeModal}
           onNext={showNextImage}
@@ -142,4 +169,3 @@ const Gallery = () => {
 };
 
 export default Gallery;
-

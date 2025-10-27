@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa";
 import { MdLocationOn, MdEmail, MdPhone } from "react-icons/md";
 
 const Footer = () => {
@@ -76,13 +76,20 @@ const Footer = () => {
           </h3>
           <div className="flex space-x-4 text-xl">
             {[
-              { icon: <FaFacebookF />, href: "#" },
-              { icon: <FaInstagram />, href: "#" },
-              { icon: <FaLinkedinIn />, href: "#" },
+              {
+                icon: <FaFacebookF />,
+                href: "https://www.facebook.com/61576356272448/",
+              },
+              {
+                href: "https://www.youtube.com/@Ai_Teg-u8t",
+                icon: <FaYoutube />,
+              },
             ].map((social, index) => (
               <a
                 key={index}
                 href={social.href}
+                target="_blank" // <-- ADD THIS LINE: Opens in new tab
+                rel="noopener noreferrer" // <-- ADD THIS LINE: Security best practice
                 className="text-gray-400 hover:text-[#02C6C8] transition-colors duration-300"
               >
                 {social.icon}
