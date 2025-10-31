@@ -119,7 +119,7 @@ const About = () => {
               icon:   <FaChalkboardTeacher className="text-[#02C6C8] text-5xl mb-4 mx-auto" />
             },
             {
-              name: "Muhammad Rooshan Rehan",
+              name: "Muhammad Rooshan Nehal",
               icon:    <FaUserTie className="text-[#02C6C8] text-5xl mb-4 mx-auto" />
             },
           ].map((member, index) => (
