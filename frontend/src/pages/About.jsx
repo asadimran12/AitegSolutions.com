@@ -106,6 +106,7 @@ const About = () => {
           ))}
         </div>
       </section>
+      {/* {Trianers} */}
       <section className="py-20 px-6 md:px-20 bg-gray-50 text-center">
         <h2 className="text-3xl font-bold text-[#03347C] mb-12">
           Our <span className="text-[#02C6C8]">Robotics Trainers</span>
@@ -122,6 +123,51 @@ const About = () => {
             },
             {
               name: "Muhammad Rooshan Nehal",
+              descrp: "AI-Teg Robotics Trainer & Prompt Engineer",
+              icon: (
+                <FaUserTie className="text-[#02C6C8] text-5xl mb-4 mx-auto" />
+              ),
+            },
+          ].map((member, index) => (
+            <div
+              key={index}
+              className="bg-white p-8 rounded-2xl border border-gray-200 hover:border-[#02C6C8] shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+            >
+              {member.icon}
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                {member.name}
+              </h3>
+              <p className="text-gray-600">{member.descrp}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+
+{/* {Stars} */}
+          <section className="py-20 px-6 md:px-20 bg-gray-50 text-center">
+        <h2 className="text-3xl font-bold text-[#03347C] mb-12">
+          Our <span className="text-[#02C6C8]">Robotics, Coding & AI Stars</span>
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {[
+            {
+              name: "Abrish Fatima",
+              descrp: "AI-Teg Robotics Trainer & Prompt Engineer",
+              icon: (
+                <FaChalkboardTeacher className="text-[#02C6C8] text-5xl mb-4 mx-auto" />
+              ),
+            },
+            {
+              name: "Syed Hamdan Bilal",
+              descrp: "AI-Teg Robotics Trainer & Prompt Engineer",
+              icon: (
+                <FaUserTie className="text-[#02C6C8] text-5xl mb-4 mx-auto" />
+              ),
+            },
+            {
+              name: "Muhmmad Taha Asif",
               descrp: "AI-Teg Robotics Trainer & Prompt Engineer",
               icon: (
                 <FaUserTie className="text-[#02C6C8] text-5xl mb-4 mx-auto" />
