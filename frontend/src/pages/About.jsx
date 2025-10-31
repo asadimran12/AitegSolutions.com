@@ -6,7 +6,6 @@ import {
   FaChalkboardTeacher,
 } from "react-icons/fa";
 
-
 import about from "../assets/about.png";
 
 const About = () => {
@@ -116,11 +115,17 @@ const About = () => {
           {[
             {
               name: "Zuraiz Fatima",
-              icon:   <FaChalkboardTeacher className="text-[#02C6C8] text-5xl mb-4 mx-auto" />
+              descrp: "AI-Teg Robotics Trainer & Prompt Engineer",
+              icon: (
+                <FaChalkboardTeacher className="text-[#02C6C8] text-5xl mb-4 mx-auto" />
+              ),
             },
             {
               name: "Muhammad Rooshan Nehal",
-              icon:    <FaUserTie className="text-[#02C6C8] text-5xl mb-4 mx-auto" />
+              descrp: "AI-Teg Robotics Trainer & Prompt Engineer",
+              icon: (
+                <FaUserTie className="text-[#02C6C8] text-5xl mb-4 mx-auto" />
+              ),
             },
           ].map((member, index) => (
             <div
