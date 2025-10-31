@@ -59,14 +59,14 @@ const Faq = () => {
               >
                 <h3
                   className={`text-lg font-semibold transition-colors duration-300 ${
-                    isOpen ? "text-green-600" : "text-gray-800"
+                    isOpen ? "text-[#02C6C8]" : "text-gray-800"
                   }`}
                 >
                   {faq.question}
                 </h3>
                 <FaChevronDown
                   className={`text-gray-500 transition-transform duration-300 ${
-                    isOpen ? "rotate-180 text-green-600" : ""
+                    isOpen ? "rotate-180 text-[#02C6C8]" : ""
                   }`}
                 />
               </button>
