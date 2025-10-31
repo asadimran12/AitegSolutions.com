@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import home from "../assets/Homeimg.png";
 import home1 from "../assets/2ndhome.png";
 import home2 from "../assets/4th.jpeg";
+import event from "../assets/event8.jpeg";
 import { Link, useNavigate } from "react-router-dom";
 import {
   FaBrain,
@@ -19,11 +20,7 @@ import Robotics1 from "../assets/Robotics1.jpeg";
 import Robotics2 from "../assets/Robotics2.jpeg";
 import Robotics3 from "../assets/Robotics3.jpeg";
 
-const HERO_SLIDES = [
-  { image: home },
-  { image: home1 },
-  { image: home2 },
-];
+const HERO_SLIDES = [{ image: home }, { image: home1 }, { image: home2 },{ image: event }];
 
 const Home = () => {
   const navigate = useNavigate();
@@ -35,15 +32,14 @@ const Home = () => {
       setCurrentSlide((prev) =>
         prev === HERO_SLIDES.length - 1 ? 0 : prev + 1
       );
-    }, 4000); 
+    }, 4000);
 
     return () => clearInterval(interval);
   }, []);
-  
 
   return (
     <>
-      <section 
+      <section
         className="relative h-[600px] md:h-screen flex items-center justify-center overflow-hidden bg-black" // 👈 ADDED bg-black HERE
       >
         {/* Map through all slides and position them absolutely */}
@@ -57,14 +53,14 @@ const Home = () => {
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
               // Use opacity based on the currentSlide index
-              opacity: index === currentSlide ? 1 : 0, 
+              opacity: index === currentSlide ? 1 : 0,
             }}
           >
             {/* The image overlay remains */}
             <div className="absolute inset-0 bg-black opacity-50"></div>
           </div>
         ))}
-        
+
         {/* The content overlay stays the same and is always visible */}
         <div className="relative z-10 text-white text-center px-6 md:px-16 space-y-6 max-w-4xl">
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight shadow-text">
@@ -91,8 +87,56 @@ const Home = () => {
         </div>
       </section>
 
-      {/* --- The rest of your component remains unchanged --- */}
-      
+
+      {/* --- Our Event Section --- */}
+      <section className="relative py-20 px-6 md:px-16 bg-gradient-to-b from-gray-50 to-white text-center">
+        <div className="max-w-5xl mx-auto">
+          {/* Title */}
+          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+            Our <span className="text-[#02C6C8]">Event</span>
+          </h2>
+          <p className="text-gray-600 text-lg mb-12 max-w-2xl mx-auto">
+            We proudly celebrate milestones that inspire innovation and growth.
+            Join us in reliving our most memorable experience.
+          </p>
+
+          {/* Event Card */}
+          <div
+            className="group relative max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+            data-aos="zoom-in"
+          >
+            {/* Event Image */}
+            <img
+              src={event}
+              alt="Summer Camp Certification Ceremony"
+              className="w-full h-110 object-cover transform group-hover:scale-105 transition-transform duration-500"
+            />
+
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition duration-300"></div>
+
+            {/* Text Content */}
+            <div className="absolute bottom-0 w-full text-white p-6 md:p-8 text-left">
+              <h3 className="text-2xl md:text-3xl font-bold mb-2">
+                Summer Camp Certification Ceremony
+              </h3>
+              <p className="text-sm md:text-base text-gray-200 max-w-lg">
+                Honoring our brilliant participants who completed the summer
+                camp with creativity, teamwork, and innovation. A celebration of
+                learning and achievement!
+              </p>
+
+              <Link
+                to="/events"
+                className="inline-block mt-5 px-6 py-2 bg-[#02C6C8] hover:bg-[#00b1b3] text-white text-sm md:text-base font-semibold rounded-full shadow-lg transition-all duration-300"
+              >
+                View All Details
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Language Mastery Section */}
       <section className="py-20 px-6 md:px-20 text-center">
         <div className="max-w-4xl mx-auto">
@@ -178,7 +222,9 @@ const Home = () => {
               desc: "Continuous guidance from certified instructors and industry professionals throughout your journey.",
             },
             {
-              icon: <FaGlobeAmericas className="text-5xl text-[#02C6C8] mb-4" />,
+              icon: (
+                <FaGlobeAmericas className="text-5xl text-[#02C6C8] mb-4" />
+              ),
               title: "Global Learning Standards",
               desc: "Globally inspired curriculum that combines innovation, creativity, and practical expertise.",
             },

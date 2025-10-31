@@ -7,6 +7,7 @@ import Courses from "./pages/Courses";
 import Gallery from "./pages/Gallery";
 import Faq from "./pages/Faq";
 import Contactus from "./pages/Contactus";
+import Events from "./pages/Events";
 
 // ✅ Main App
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
         { path: "/gallery", element: <Gallery /> },
         { path: "/faq", element: <Faq /> },
         { path: "/contact", element: <Contactus /> },
+        { path: "/events", element: <Events /> },
       ],
     },
   ]);
