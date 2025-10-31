@@ -12,7 +12,7 @@ const About = () => {
   return (
     <div className="bg-white text-gray-800">
       {/* 🔹 Hero Section */}
-      <section className="bg-gradient-to-b from-white to-gray-100 text-center py-20 px-6 md:px-20">
+      <section className=" text-center py-20 px-6 md:px-20">
         <h1 className="text-4xl md:text-5xl font-bold text-[#03347C]  mb-4">
           About <span className="text-[#02C6C8]">AI-TEG Academy</span>
         </h1>
@@ -64,7 +64,7 @@ const About = () => {
       </section>
 
       {/* 🔹 Our Team Section */}
-      <section className="py-20 px-6 md:px-20 bg-gray-50 text-center">
+      <section className="py-20 px-6 md:px-20 text-center">
         <h2 className="text-3xl font-bold text-[#03347C] mb-12">
           Meet Our <span className="text-[#02C6C8]">Leadership Team</span>
         </h2>
@@ -107,7 +107,7 @@ const About = () => {
         </div>
       </section>
       {/* {Trianers} */}
-      <section className="py-20 px-6 md:px-20 bg-gray-50 text-center">
+      <section className="py-20 px-6 md:px-20 text-center">
         <h2 className="text-3xl font-bold text-[#03347C] mb-12">
           Our <span className="text-[#02C6C8]">Robotics Trainers</span>
         </h2>
@@ -145,30 +145,27 @@ const About = () => {
 
 
 {/* {Stars} */}
-          <section className="py-20 px-6 md:px-20 bg-gray-50 text-center">
+          <section className="py-20 px-6 md:px-20 text-center">
         <h2 className="text-3xl font-bold text-[#03347C] mb-12">
           Our <span className="text-[#02C6C8]">Robotics, Coding & AI Stars</span>
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {[
             {
               name: "Abrish Fatima",
-              descrp: "AI-Teg Robotics Trainer & Prompt Engineer",
               icon: (
                 <FaChalkboardTeacher className="text-[#02C6C8] text-5xl mb-4 mx-auto" />
               ),
             },
             {
               name: "Syed Hamdan Bilal",
-              descrp: "AI-Teg Robotics Trainer & Prompt Engineer",
               icon: (
                 <FaUserTie className="text-[#02C6C8] text-5xl mb-4 mx-auto" />
               ),
             },
             {
               name: "Muhmmad Taha Asif",
-              descrp: "AI-Teg Robotics Trainer & Prompt Engineer",
               icon: (
                 <FaUserTie className="text-[#02C6C8] text-5xl mb-4 mx-auto" />
               ),
