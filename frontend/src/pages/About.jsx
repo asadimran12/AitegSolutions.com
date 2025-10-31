@@ -136,7 +136,7 @@ const About = () => {
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
                 {member.name}
               </h3>
-              <p className="text-gray-600">{member.role}</p>
+              <p className="text-gray-600">{member.descrp}</p>
             </div>
           ))}
         </div>
