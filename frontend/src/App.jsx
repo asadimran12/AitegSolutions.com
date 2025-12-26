@@ -21,7 +21,7 @@ const App = () => {
         { path: "/gallery", element: <Gallery /> },
         { path: "/faq", element: <Faq /> },
         { path: "/contact", element: <Contactus /> },
-        { path: "/events", element: <Events /> },
+        { path: "/events/:eventId", element: <Events /> },
       ],
     },
   ]);
