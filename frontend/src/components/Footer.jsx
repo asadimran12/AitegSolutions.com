@@ -103,8 +103,10 @@ const Footer = () => {
       <div className="flex flex-col md:flex-row justify-between items-center mt-8 text-sm text-gray-500">
         <p>© {new Date().getFullYear()} AI-TEG Academy. All rights reserved.</p>
         <p className="mt-3 md:mt-0">
-          Designed with 💙 by{" "}
-          <span className="text-[#02C6C8] font-medium">AI-TEG Academy</span>
+          Developed with 💙 by{" "}
+                    <span className="text-[#02C6C8] font-medium">Asad Imran</span>
+                    <br></br>
+          <span className="text-[#02C6C8] font-medium">iasad4855@gmail.com</span>
         </p>
       </div>
     </footer>

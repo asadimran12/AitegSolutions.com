@@ -47,30 +47,23 @@ const Courses = () => {
         {programs.map((course, index) => (
           <div
             key={index}
-            onClick={() => setShowdesc(showdesc === index ? null : index)}
-            // --- KEY CHANGES FOR SMOOTH ANIMATION ---
-            // 1. Set a fixed height to prevent grid resizing.
-            // 2. 'relative' positions children absolutely within this card.
-            // 3. Longer, smoother transition duration.
             className={`
               relative h-80 rounded-2xl border shadow-md
               transition-all duration-500 ease-in-out 
-              hover:-translate-y-2 cursor-pointer overflow-hidden p-6
+              hover:-translate-y-2 overflow-hidden p-6
               flex items-center justify-center
-              ${
-                showdesc === index
-                  ? "bg-[#02C6C8] text-white shadow-2xl"
-                  : "bg-white border-gray-200 hover:border-[#02C6C8] hover:shadow-xl"
+              ${showdesc === index
+                ? "bg-[#02C6C8] text-white shadow-2xl"
+                : "bg-white border-gray-200 hover:border-[#02C6C8] hover:shadow-xl"
               }
             `}
           >
             {/* "Front" of the Card: Icon and Title */}
             <div
-              // --- Animates out by fading and shrinking ---
               className={`
                 absolute inset-0 flex flex-col items-center justify-center
                 transition-all duration-500 ease-in-out
-                ${showdesc === index ? "opacity-0 scale-95" : "opacity-100 scale-100"}
+                ${showdesc === index ? "opacity-0 scale-95 pointer-events-none" : "opacity-100 scale-100 pointer-events-auto"}
               `}
             >
               <div className="w-full h-48 flex items-center justify-center">
@@ -79,20 +72,31 @@ const Courses = () => {
               <h3 className={`text-xl mt-3 font-semibold text-gray-900 mb-3 ${showdesc === index ? 'text-white' : 'text-gray-900'}`}>
                 {course.title}
               </h3>
+              <button
+                onClick={() => setShowdesc(index)}
+                className="bg-[#02C6C8] cursor-pointer text-white px-4 py-2 rounded-full hover:bg-gray-900 transition-colors duration-300">
+                Show Details
+              </button>
             </div>
 
             {/* "Back" of the Card: Description */}
             <div
               // --- Animates in by fading and growing to normal size ---
               className={`
-                absolute inset-0 flex items-center justify-center p-4
+                absolute inset-0 flex-col items-center justify-center p-4
                 transition-all duration-500 ease-in-out
-                ${showdesc === index ? "opacity-100 scale-100" : "opacity-0 scale-105"}
+                ${showdesc === index ? "opacity-100 scale-100   pointer-events-auto" : "opacity-0 scale-105 pointer-events-none"}
               `}
             >
               <p className="text-base md:text-lg leading-relaxed text-white">
                 {course.desc}
               </p>
+              <button
+                onClick={() => setShowdesc(null)}
+                className="bg-white cursor-pointer text-[#02C6C8] px-4 py-2 rounded-full hover:bg-gray-900 hover:text-white"
+              >
+                Hide Details
+              </button>
             </div>
           </div>
         ))}

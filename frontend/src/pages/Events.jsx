@@ -68,13 +68,13 @@ const VideoIcon = () => (
 
 // --- Image Gallery ---
 const ImageGallery = () => {
- const images = [
-  { src: event1, alt: "Certificate Award" },
-  { src: event3, alt: "Gift Giving" },
-  { src: event4, alt: "Shield Giving to Guest" },
-  { src: event5, alt: "Group Photo with Parents" },
-  { src: event6, alt: "Shield Giving to Guest" },
-];
+  const images = [
+    { src: event1, alt: "Certificate Award" },
+    { src: event3, alt: "Gift Giving" },
+    { src: event4, alt: "Shield Giving to Guest" },
+    { src: event5, alt: "Group Photo with Parents" },
+    { src: event6, alt: "Shield Giving to Guest" },
+  ];
 
 
   return (
@@ -89,8 +89,8 @@ const ImageGallery = () => {
             alt={image.alt}
             className="w-full h-52 object-cover"
             onError={(e) =>
-              (e.target.src =
-                "https://placehold.co/600x400/eee/333?text=Image+Error")
+            (e.target.src =
+              "https://placehold.co/600x400/eee/333?text=Image+Error")
             }
           />
           <p className="p-3 text-center text-sm text-gray-600 font-medium">
@@ -104,13 +104,13 @@ const ImageGallery = () => {
 
 // --- Video Gallery ---
 const VideoGallery = () => {
- const videos = [
-  { title: "Chief Guest Address", src: event2video },
-  { title: "Student Project Showcase", src: event3video },
-  { title: "AI-TEG & Aspire MOU Signing", src: event4video },
-  { title: "Award Ceremony Highlights", src: event5video },
-  { title: "Innovation Exhibition", src: event7video },
-];
+  const videos = [
+    { title: "Chief Guest Address", src: event2video },
+    { title: "Student Project Showcase", src: event3video },
+    { title: "AI-TEG & Aspire MOU Signing", src: event4video },
+    { title: "Award Ceremony Highlights", src: event5video },
+    { title: "Innovation Exhibition", src: event7video },
+  ];
 
 
   return (

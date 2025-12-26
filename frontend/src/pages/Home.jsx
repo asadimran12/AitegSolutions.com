@@ -20,7 +20,7 @@ import Robotics1 from "../assets/Robotics1.jpeg";
 import Robotics2 from "../assets/Robotics2.jpeg";
 import Robotics3 from "../assets/Robotics3.jpeg";
 
-const HERO_SLIDES = [{ image: home }, { image: home1 }, { image: home2 },{ image: event }];
+const HERO_SLIDES = [{ image: home }, { image: home1 }, { image: home2 }, { image: event }];
 
 const Home = () => {
   const navigate = useNavigate();
@@ -78,12 +78,12 @@ const Home = () => {
             courses designed to shape the innovators of tomorrow.
           </p>
 
-          <button
+          {/* <button
             onClick={() => navigate("/courses")}
             className="mt-6 px-10 py-4 bg-[#02C6C8] hover:bg-[#00b1b3] text-white text-lg font-bold rounded-xl shadow-2xl hover:shadow-lg transition-all duration-300 transform hover:scale-105"
           >
             Explore Courses
-          </button>
+          </button> */}
         </div>
       </section>
 
@@ -328,15 +328,15 @@ const Home = () => {
                   {i === 0
                     ? "Robotics + Coding (Grades 1-3)"
                     : i === 1
-                    ? "Modern Robotics (Grades 4-8)"
-                    : "Hands-on STEM Kits"}
+                      ? "Modern Robotics (Grades 4-8)"
+                      : "Hands-on STEM Kits"}
                 </h3>
                 <p className="text-sm text-gray-600 mt-1">
                   {i === 0
                     ? "Foundational STEM learning for young innovators."
                     : i === 1
-                    ? "Perceive - Evaluate - Execute: Advanced concepts."
-                    : "The complete physical kit for real-world application."}
+                      ? "Perceive - Evaluate - Execute: Advanced concepts."
+                      : "The complete physical kit for real-world application."}
                 </p>
               </Link>
             ))}

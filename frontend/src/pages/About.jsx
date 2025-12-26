@@ -7,6 +7,10 @@ import {
 } from "react-icons/fa";
 
 import about from "../assets/about.png";
+// import sirsohail from "../assets/sir sohail.jpeg";
+// import siryasir from "../assets/YasirAdrees.jpeg";
+// import Roshan from "../assets/Roshan.jpeg";
+// import Taiba from "../assets/Taiba.jpeg";
 
 const About = () => {
   return (
@@ -74,22 +78,22 @@ const About = () => {
             {
               name: "Yasir Adrees Faisal",
               role: "Director (Strategy & Innovation)",
-              icon: (
-                <FaUserTie className="text-[#02C6C8] text-5xl mb-4 mx-auto" />
+               icon: (
+                     <FaUserTie className="text-[#02C6C8] text-5xl mb-4 mx-auto" />
               ),
             },
             {
               name: "Mrs. Taiba Qurrat",
               role: "Director (Training & Curriculum)",
               icon: (
-                <FaChalkboardTeacher className="text-[#02C6C8] text-5xl mb-4 mx-auto" />
+                 <FaChalkboardTeacher className="text-[#02C6C8] text-5xl mb-4 mx-auto" />
               ),
             },
             {
               name: "Syed Sohail Anjum",
               role: "Director (AI & Institutional Development)",
               icon: (
-                <FaUserTie className="text-[#02C6C8] text-5xl mb-4 mx-auto" />
+                    <FaUserTie className="text-[#02C6C8] text-5xl mb-4 mx-auto" />
               ),
             },
           ].map((member, index) => (
@@ -124,8 +128,8 @@ const About = () => {
             {
               name: "Muhammad Rooshan Nehal",
               descrp: "AI-Teg Robotics Trainer & Prompt Engineer",
-              icon: (
-                <FaUserTie className="text-[#02C6C8] text-5xl mb-4 mx-auto" />
+               icon: (
+                    <FaUserTie className="text-[#02C6C8] text-5xl mb-4 mx-auto" />
               ),
             },
           ].map((member, index) => (
@@ -143,11 +147,11 @@ const About = () => {
         </div>
       </section>
 
-
-{/* {Stars} */}
-          <section className="py-20 px-6 md:px-20 text-center">
+      {/* {Stars} */}
+      <section className="py-20 px-6 md:px-20 text-center">
         <h2 className="text-3xl font-bold text-[#03347C] mb-12">
-          Our <span className="text-[#02C6C8]">Robotics, Coding & AI Stars</span>
+          Our{" "}
+          <span className="text-[#02C6C8]">Robotics, Coding & AI Stars</span>
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">

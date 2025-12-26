@@ -7,7 +7,7 @@ const Faq = () => {
   const navigate = useNavigate();
 
   const faqs = [
-     {
+    {
       question: "What programs and courses do you offer?",
       answer:
         "AI-TEG Academy offers diverse programs including AI & Digital Literacy, STEM and Robotics Education, Teacher Capacity Building, Emotional Intelligence Training, and AI-driven Consultancy for Schools. Each course is designed to promote creativity, innovation, and real-world application.",
@@ -49,32 +49,28 @@ const Faq = () => {
           return (
             <div
               key={index}
-              className={`border rounded-2xl shadow-sm transition-all duration-300 hover:shadow-md ${
-                isOpen ? "border-[#02C6C8]" : "border-gray-200"
-              }`}
+              className={`border rounded-2xl shadow-sm transition-all duration-300 hover:shadow-md ${isOpen ? "border-[#02C6C8]" : "border-gray-200"
+                }`}
             >
               <button
                 onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="w-full flex justify-between items-center p-5 text-left focus:outline-none"
+                className="w-full cursor-pointer flex justify-between items-center p-5 text-left focus:outline-none"
               >
                 <h3
-                  className={`text-lg font-semibold transition-colors duration-300 ${
-                    isOpen ? "text-[#02C6C8]" : "text-gray-800"
-                  }`}
+                  className={`text-lg font-semibold transition-colors duration-300 ${isOpen ? "text-[#02C6C8]" : "text-gray-800"
+                    }`}
                 >
                   {faq.question}
                 </h3>
                 <FaChevronDown
-                  className={`text-gray-500 transition-transform duration-300 ${
-                    isOpen ? "rotate-180 text-[#02C6C8]" : ""
-                  }`}
+                  className={`text-gray-500 transition-transform duration-300 ${isOpen ? "rotate-180 text-[#02C6C8]" : ""
+                    }`}
                 />
               </button>
 
               <div
-                className={`overflow-hidden transition-all duration-500 ${
-                  isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
-                }`}
+                className={`overflow-hidden transition-all duration-500 ${isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                  }`}
               >
                 <p className="px-5 pb-5 text-gray-700 border-t border-gray-200 leading-relaxed">
                   {faq.answer}
