@@ -52,28 +52,21 @@ const Headers = () => {
                 key={link.name}
                 to={link.path}
                 className={`relative transition-colors duration-300 ${location.pathname === link.path
-                    ? "text-[#02C6C8]"
-                    : "text-gray-700"
+                  ? "text-[#02C6C8]"
+                  : "text-gray-700"
                   } hover:text-[#02C6C8]`}
               >
                 {link.name}
                 <span
                   className={`absolute left-0 -bottom-1 h-[2px] bg-[#02C6C8] transition-all duration-300 ${location.pathname === link.path
-                      ? "w-full"
-                      : "w-0 hover:w-full"
+                    ? "w-full"
+                    : "w-0 hover:w-full"
                     }`}
                 ></span>
               </Link>
             ))}
         </nav>
 
-        {/* 🔹 Contact Button (Desktop Only) */}
-        <Link
-          to="/contact"
-          className="hidden md:inline-block border border-[#02C6C8] text-[#02C6C8] px-5 py-2 rounded-full font-medium hover:bg-[#02C6C8] hover:text-white transition duration-300"
-        >
-          Contact Us
-        </Link>
 
         {/* 🔹 Mobile Menu Button */}
         <button
@@ -87,8 +80,8 @@ const Headers = () => {
       {/* 🔹 Mobile Navigation Menu */}
       <div
         className={`md:hidden bg-white shadow-md absolute top-[72px] left-0 w-full transition-all duration-300 ease-in-out ${menuOpen
-            ? "opacity-100 visible translate-y-0"
-            : "opacity-0 invisible -translate-y-5"
+          ? "opacity-100 visible translate-y-0"
+          : "opacity-0 invisible -translate-y-5"
           }`}
       >
         <nav className="flex flex-col items-center space-y-4 py-5 text-lg font-medium">
@@ -98,8 +91,8 @@ const Headers = () => {
               to={link.path}
               onClick={closeMenu}
               className={`relative transition-colors duration-300 ${location.pathname === link.path
-                  ? "text-[#02C6C8]"
-                  : "text-gray-700"
+                ? "text-[#02C6C8]"
+                : "text-gray-700"
                 } hover:text-[#02C6C8]`}
             >
               {link.name}
