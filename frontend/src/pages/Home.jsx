@@ -21,7 +21,7 @@ import Robotics2 from "../assets/Robotics2.jpeg";
 import Robotics3 from "../assets/Robotics3.jpeg";
 import { eventsData } from "../components/eventsData"
 
-const HERO_SLIDES = [{ image: home }, { image: home1 }, { image: home2 }, { image: event }];
+const HERO_SLIDES = [{ image: home }, { image: home1 }, { image: home2 }];
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -37,14 +37,45 @@ const Home = () => {
 
   return (
     <>
+      {/* Local keyframes for animations that AOS can't handle (slow background zoom, hero entrance, icon float) */}
+      <style>{`
+        @keyframes kenburns {
+          0% { transform: scale(1); }
+          100% { transform: scale(1.12); }
+        }
+        .kenburns-bg {
+          animation: kenburns 8s ease-in-out infinite alternate;
+        }
+        @keyframes heroFadeUp {
+          0% { opacity: 0; transform: translateY(24px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .hero-fade-up {
+          animation: heroFadeUp 0.9s ease-out forwards;
+        }
+        @keyframes iconFloat {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-6px); }
+        }
+        .icon-float:hover svg {
+          animation: iconFloat 1.4s ease-in-out infinite;
+        }
+        @keyframes dotPulse {
+          0% { box-shadow: 0 0 0 0 rgba(2, 198, 200, 0.6); }
+          100% { box-shadow: 0 0 0 8px rgba(2, 198, 200, 0); }
+        }
+      `}</style>
+
       <section
-        className="relative h-[600px] md:h-screen flex items-center justify-center overflow-hidden bg-black" // 👈 ADDED bg-black HERE
+        className="relative h-[600px] md:h-screen flex items-center justify-center overflow-hidden bg-black"
       >
         {/* Map through all slides and position them absolutely */}
         {HERO_SLIDES.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-700 ease-in-out`}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === currentSlide ? "kenburns-bg" : ""
+            }`}
             style={{
               backgroundImage: `url(${slide.image})`,
               backgroundSize: "cover",
@@ -61,13 +92,19 @@ const Home = () => {
 
         {/* The content overlay stays the same and is always visible */}
         <div className="relative z-10 text-white text-center px-6 md:px-16 space-y-6 max-w-4xl">
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight shadow-text">
+          <h1
+            className="hero-fade-up text-4xl md:text-6xl font-extrabold leading-tight shadow-text"
+            style={{ animationDelay: "0.1s" }}
+          >
             Where <span className="text-[#02C6C8]">Learning</span> Meets{" "}
             <span className="text-[#02C6C8]">Technology</span> &{" "}
             <span className="text-[#02C6C8]">Innovation</span>
           </h1>
 
-          <p className="text-xl md:text-2xl font-light max-w-2xl mx-auto shadow-text">
+          <p
+            className="hero-fade-up text-xl md:text-2xl font-light max-w-2xl mx-auto shadow-text"
+            style={{ animationDelay: "0.35s", opacity: 0 }}
+          >
             Join a thriving community of{" "}
             <span className="font-semibold text-[#02C6C8]">
               100+ passionate learners
@@ -83,6 +120,23 @@ const Home = () => {
             Explore Courses
           </button> */}
         </div>
+
+        {/* Slide indicator dots */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex gap-3">
+          {HERO_SLIDES.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              aria-label={`Go to slide ${index + 1}`}
+              className={`h-2.5 rounded-full transition-all duration-500 ${
+                index === currentSlide
+                  ? "w-8 bg-[#02C6C8]"
+                  : "w-2.5 bg-white/50 hover:bg-white/80"
+              }`}
+              style={index === currentSlide ? { animation: "dotPulse 1.8s ease-out infinite" } : {}}
+            />
+          ))}
+        </div>
       </section>
 
 
@@ -91,21 +145,29 @@ const Home = () => {
         <div className="max-w-5xl mx-auto">
 
           {/* Title */}
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+          <h2
+            className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4"
+            data-aos="fade-down"
+          >
             Our <span className="text-[#02C6C8]">Events</span>
           </h2>
 
-          <p className="text-gray-600 text-lg mb-12 max-w-2xl mx-auto">
+          <p
+            className="text-gray-600 text-lg mb-12 max-w-2xl mx-auto"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
             We proudly celebrate milestones that inspire innovation and growth.
             Join us in reliving our most memorable experiences.
           </p>
 
           {/* Event Cards */}
-          {eventsData.map((event) => (
+          {eventsData.map((event, index) => (
             <div
               key={event.id}
               className="group relative mb-12 max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
               data-aos="zoom-in"
+              data-aos-delay={index * 100}
             >
               {/* Event Image */}
               <img
@@ -129,7 +191,7 @@ const Home = () => {
 
                 <Link
                   to={`/events/${event.id}`}
-                  className="inline-block mt-5 px-6 py-2 bg-[#02C6C8] hover:bg-[#00b1b3] text-white text-sm md:text-base font-semibold rounded-full shadow-lg transition-all duration-300"
+                  className="inline-block mt-5 px-6 py-2 bg-[#02C6C8] hover:bg-[#00b1b3] text-white text-sm md:text-base font-semibold rounded-full shadow-lg transition-all duration-300 hover:scale-105"
                 >
                   View All Details
                 </Link>
@@ -142,7 +204,7 @@ const Home = () => {
 
 
       {/* Language Mastery Section */}
-      <section className="py-20 px-6 md:px-20 text-center">
+      {/* <section className="py-20 px-6 md:px-20 text-center">
         <div className="max-w-4xl mx-auto">
           <span className="block text-[#02C6C8] uppercase tracking-wide text-sm font-semibold mb-3">
             Global Opportunities
@@ -195,11 +257,14 @@ const Home = () => {
             Start Your IELTS Journey
           </a>
         </div>
-      </section>
+      </section> */}
 
       {/* Why Choose Us */}
       <section className="py-20 px-6 md:px-20 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12">
+        <h2
+          className="text-4xl md:text-5xl font-bold text-gray-900 mb-12"
+          data-aos="fade-down"
+        >
           Why Choose <span className="text-[#02C6C8]">AI-TEG Academy?</span>
         </h2>
 
@@ -240,7 +305,9 @@ const Home = () => {
           ].map((feature, index) => (
             <div
               key={index}
-              className="bg-white p-8 rounded-2xl border border-gray-200 hover:border-[#02C6C8] shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+              className="icon-float bg-white p-8 rounded-2xl border border-gray-200 hover:border-[#02C6C8] shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
             >
               <div className="flex justify-center">{feature.icon}</div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">
@@ -254,10 +321,17 @@ const Home = () => {
 
       {/* Our Impact */}
       <section className="py-20 px-6 md:px-20 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+        <h2
+          className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+          data-aos="fade-down"
+        >
           Our <span className="text-[#02C6C8]">Impact</span>
         </h2>
-        <p className="text-gray-700 max-w-3xl mx-auto mb-12 text-lg">
+        <p
+          className="text-gray-700 max-w-3xl mx-auto mb-12 text-lg"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
           We are proud to be driving change across Pakistan’s education sector
           by combining innovation, ethics, and technology for sustainable
           growth.
@@ -286,7 +360,9 @@ const Home = () => {
           ].map((item, index) => (
             <div
               key={index}
-              className="bg-white p-6 rounded-2xl border border-gray-200 hover:border-[#02C6C8] shadow-md hover:shadow-lg transition duration-300 hover:-translate-y-2"
+              className="icon-float bg-white p-6 rounded-2xl border border-gray-200 hover:border-[#02C6C8] shadow-md hover:shadow-lg transition duration-300 hover:-translate-y-2"
+              data-aos="zoom-in"
+              data-aos-delay={index * 100}
             >
               <div className="flex justify-center">{item.icon}</div>
               <p className="text-gray-700">{item.text}</p>
@@ -298,19 +374,30 @@ const Home = () => {
       {/* Flagship Course Section */}
       <section className="py-20 px-6 md:px-20 text-center">
         <div className="max-w-6xl mx-auto text-black">
-          <span className="block text-[#02C6C8] uppercase tracking-wide text-sm font-semibold mb-3">
+          <span
+            className="block text-[#02C6C8] uppercase tracking-wide text-sm font-semibold mb-3"
+            data-aos="fade-up"
+          >
             Explore Our
           </span>
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4" data-aos="fade-up" data-aos-delay="100">
             Our <span className="text-[#02C6C8]">Flagship</span> Course
           </h2>
 
-          <p className="text-black text-lg mb-2 leading-relaxed font-semibold">
+          <p
+            className="text-black text-lg mb-2 leading-relaxed font-semibold"
+            data-aos="fade-up"
+            data-aos-delay="150"
+          >
             Modern Robotics for Young Innovators (Grades 1-8)
           </p>
 
-          <p className="text-gray-700 text-lg mb-8 leading-relaxed">
+          <p
+            className="text-gray-700 text-lg mb-8 leading-relaxed"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
             Join our most demanding and popular course which dives deep into the
             'Perceive - Evaluate - Execute' model. Students build advanced,
             hands-on robotics kits, mastering coding, AI fundamentals, and
@@ -322,11 +409,13 @@ const Home = () => {
               <Link
                 key={i}
                 className="block text-left bg-white p-4 rounded-xl shadow-lg border-2 border-transparent hover:border-[#02C6C8] transition duration-300 hover:-translate-y-1"
+                data-aos="fade-up"
+                data-aos-delay={i * 150}
               >
                 <img
                   src={img}
                   alt={`Robotics Image ${i + 1}`}
-                  className="w-full h-auto rounded-lg mb-4 object-cover"
+                  className="w-full h-auto rounded-lg mb-4 object-cover transition-transform duration-500 hover:scale-105"
                 />
                 <h3 className="text-xl font-semibold text-gray-900">
                   {i === 0
@@ -348,7 +437,9 @@ const Home = () => {
 
           <Link
             to="/courses"
-            className="inline-block bg-[#02C6C8] text-white px-8 py-3 rounded-full text-lg font-medium shadow-lg hover:bg-[#00b1b3] hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 mt-12"
+            className="inline-block bg-[#02C6C8] text-white px-8 py-3 rounded-full text-lg font-medium shadow-lg hover:bg-[#00b1b3] hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 mt-12"
+            data-aos="zoom-in"
+            data-aos-delay="100"
           >
             View All Courses & Kits
           </Link>

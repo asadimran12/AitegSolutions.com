@@ -25,21 +25,11 @@ const Headers = () => {
     <header className="bg-white sticky top-0 z-50 shadow-md transition-all duration-300">
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
         {/* 🔹 Logo Section */}
-        <Link to="/" className="flex items-center space-x-3">
-          <img
-            src={headerLogo1}
-            alt="Header Logo 1"
-            className="h-10 w-auto object-contain"
-          />
+        <Link to="/" className="flex items-center">
           <img
             src={mainLogo}
             alt="Main Logo"
             className="h-12 w-auto object-contain"
-          />
-          <img
-            src={headerLogo2}
-            alt="Header Logo 2"
-            className="h-10 w-auto object-contain"
           />
         </Link>
 

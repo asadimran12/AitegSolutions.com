@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { MdLocationOn, MdEmail, MdPhone } from "react-icons/md";
 
 const Contactus = () => {
@@ -34,13 +33,14 @@ const Contactus = () => {
     setStatus({ message: "Sending...", type: "sending" });
     console.log(formData)
     try {
-      const response = await axios.post(
+      const response = await fetch(
         "https://aiteg-solutions-com-eqb5.vercel.app/auth/contactus",
-        formData,
-        {
-          withCredentials: true,
-          headers: { "Content-Type": "application/json" },
-        }
+         {
+    method: "POST",
+    credentials: "include", // equivalent of axios' withCredentials: true
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData),
+  }
       );
 
       if (response.status === 200) {
