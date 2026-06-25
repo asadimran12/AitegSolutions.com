@@ -297,11 +297,6 @@ const Home = () => {
               title: "Global Learning Standards",
               desc: "Globally inspired curriculum that combines innovation, creativity, and practical expertise.",
             },
-            {
-              icon: <FaLanguage className="text-5xl text-[#02C6C8] mb-4" />,
-              title: "Language Skills",
-              desc: "Master key global languages like English for academic and professional success.",
-            },
           ].map((feature, index) => (
             <div
               key={index}
