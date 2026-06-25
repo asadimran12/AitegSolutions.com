@@ -78,7 +78,7 @@ const About = () => {
             
             {
               name: "Syed Sohail Anjum",
-              role: "Director (AI & Institutional Development)",
+              role: "Founder of AI-Teg Academy & Director (AI & Institutional Development)",
               icon: (
                     <FaUserTie className="text-[#02C6C8] text-5xl mb-4 mx-auto" />
               ),
