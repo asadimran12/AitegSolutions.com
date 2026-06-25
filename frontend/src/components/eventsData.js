@@ -83,7 +83,7 @@ export const eventsData = [
       { src: event3, alt: "Gift Giving" },
       { src: event4, alt: "Shield Giving" },
       { src: event5, alt: "Group Photo" },
-      { src: event6, alt: "Parents & Students" },
+      { src: event6, alt: "Certificate Award" },
     ],
 
     videos: [
