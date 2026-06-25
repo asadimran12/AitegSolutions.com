@@ -73,22 +73,9 @@ const About = () => {
           Meet Our <span className="text-[#02C6C8]">Leadership Team</span>
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="mx-auto">
           {[
-            {
-              name: "Yasir Adrees Faisal",
-              role: "Director (Strategy & Innovation)",
-               icon: (
-                     <FaUserTie className="text-[#02C6C8] text-5xl mb-4 mx-auto" />
-              ),
-            },
-            {
-              name: "Mrs. Taiba Qurrat",
-              role: "Director (Training & Curriculum)",
-              icon: (
-                 <FaChalkboardTeacher className="text-[#02C6C8] text-5xl mb-4 mx-auto" />
-              ),
-            },
+            
             {
               name: "Syed Sohail Anjum",
               role: "Director (AI & Institutional Development)",
