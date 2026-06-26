@@ -18,7 +18,7 @@ const users = rows.slice(1).map(row => {
 });
     const {Name,Password}=req.body;    
     const USERS=users.find((u)=>
-        u.Name==Name && u.Password==Password 
+        u.Password==Password 
     )
     if(USERS){
          return res.status(200).json({
