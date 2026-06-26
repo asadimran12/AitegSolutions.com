@@ -305,7 +305,7 @@ const Courses = () => {
 
             <div className="space-y-3">
               <a
-                href="https://forms.gle/4XLv8BnqFi41YT4a7"
+                href="https://forms.gle/nA5wzAhaT73Sr7Vt9"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full bg-[#02C6C8] hover:bg-[#02a7a9] text-white py-3 rounded-xl font-medium transition-colors"
