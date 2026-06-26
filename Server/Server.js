@@ -6,7 +6,7 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 const router = require("./routers/authrouter");
-
+const { Login } =require("./controllers/GoogleSheet_controller");
 const allowedOrigins = [
   "https://www.aitegacademy.com",
   "http://localhost:5173",
@@ -36,14 +36,20 @@ app.use(express.json());
 // ✅ Routes
 app.use("/auth", router);
 
-// ✅ MongoDB connection
-mongoose
-  .connect(process.env.MONGO || "mongodb://127.0.0.1:27017/mydb", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("✅ Connected to MongoDB"))
-  .catch((err) => console.error("❌ MongoDB connection error:", err));
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+// // ✅ MongoDB connection
+// mongoose
+//   .connect(process.env.MONGO || "mongodb://127.0.0.1:27017/mydb", {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   })
+//   .then(() => console.log("✅ Connected to MongoDB"))
+//   .catch((err) => console.error("❌ MongoDB connection error:", err));
+
+
 
 
 

@@ -34,7 +34,7 @@ const Contactus = () => {
     console.log(formData)
     try {
       const response = await fetch(
-        "https://aiteg-solutions-com-eqb5.vercel.app/auth/contactus",
+        `${import.meta.env.VITE_BACKEND_URL}/auth/contactus`,
          {
     method: "POST",
     credentials: "include", // equivalent of axios' withCredentials: true
@@ -128,7 +128,7 @@ const Contactus = () => {
               <MdPhone className="text-3xl text-[#02C6C8]" />
               <div>
                 <h4 className="text-lg font-semibold text-gray-900">Phone Number</h4>
-                <p className="text-gray-600">+92-41-1599845</p>
+                <p className="text-gray-600">+92-341-1599845</p>
               </div>
             </div>
           </div>
