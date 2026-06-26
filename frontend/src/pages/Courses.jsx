@@ -70,6 +70,7 @@ const Courses = () => {
     e.preventDefault();
     setError(""); // Clear errors on new attempt
     setLoading(true);
+    console.log(import.meta.env.VITE_BACKEND_URL)
 
     try {
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, {
