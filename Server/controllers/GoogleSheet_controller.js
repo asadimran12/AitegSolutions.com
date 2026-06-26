@@ -6,16 +6,17 @@ const Login=async(req,res)=> {
       spreadsheetId: process.env.GOOGLE__ID,
       range: process.env.GOOGLE_RANGE,
     });
-
+    
     const rows = response.data.values;
+    console.log(rows)
 
 const users = rows.slice(1).map(row => {
   return {
     Timestamp: row[0],
-    Name: row[1],
-    Password: row[2]
+    Password: row[1]
   };
 });
+console.log(users)
     const {Name,Password}=req.body;    
     const USERS=users.find((u)=>
         u.Password==Password 

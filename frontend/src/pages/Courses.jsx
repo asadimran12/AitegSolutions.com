@@ -4,6 +4,7 @@ import TeacherCert from "../assets/TeacherCert.png";
 import ParentCert from "../assets/ParentCert.png";
 import EQM from "../assets/EQM.png";
 import AIS from "../assets/AIS.png";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Courses = () => {
   const [showdesc, setShowdesc] = useState(null);
@@ -14,6 +15,7 @@ const Courses = () => {
   const [selectedDiploma, setSelectedDiploma] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const programs = [
     {
@@ -206,7 +208,7 @@ const Courses = () => {
 
             {/* Modal Body/Form */}
             <form onSubmit={handleLoginSubmit} className="p-6 space-y-5">
-              
+
               {/* Error Message Display */}
               {error && (
                 <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm border border-red-100 text-center animate-in fade-in">
@@ -233,15 +235,26 @@ const Courses = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">
                   Password
                 </label>
-                <input
-                  type="password"
-                  required
-                  disabled={loading}
-                  placeholder="Enter your password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#02C6C8] focus:border-[#02C6C8] focus:bg-white outline-none transition-all disabled:opacity-60 disabled:cursor-not-allowed"
-                />
+
+                <div className="relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    required
+                    disabled={loading}
+                    placeholder="Enter your password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="w-full px-4 py-2.5 pr-12 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#02C6C8] focus:border-[#02C6C8] focus:bg-white outline-none transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+                  />
+
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                  >
+                    {showPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
+                  </button>
+                </div>
               </div>
 
               <button
@@ -274,7 +287,7 @@ const Courses = () => {
       {successLogin && selectedDiploma && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
           <div className="bg-white rounded-2xl p-8 w-full max-w-sm text-center shadow-2xl animate-in fade-in zoom-in-95 duration-200">
-            
+
             {/* Success Icon */}
             <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-6">
               <svg className="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
