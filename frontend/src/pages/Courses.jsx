@@ -83,6 +83,7 @@ const Courses = () => {
       });
 
       const data = await response.json();
+      console.log(data)
 
       if (response.ok) {
         setSuccessLogin(true);
