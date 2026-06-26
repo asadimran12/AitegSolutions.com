@@ -50,7 +50,7 @@ const Courses = () => {
     },
     {
       title: "Level 2 Diploma",
-      whatsappLink: ""
+      whatsappLink: "https://chat.whatsapp.com/CddnstMWSAHGeuwGhnW3Rz?s=cl&p=i&mlu=0"
     },
     {
       title: "Professional Developer Diploma",
