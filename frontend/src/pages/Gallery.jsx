@@ -7,9 +7,7 @@ import image7 from "../assets/7th.jpeg";
 import image8 from "../assets/8th.jpeg";
 
 const officeImages = [
-  { id: 1, src: image3, alt: "AI-TEC Academy main gate entrance" },
-  { id: 2, src: image4, alt: "Exterior view of AI-TEC Academy" },
-  { id: 3, src: image5, alt: "Modern classroom in Ai-Teg Academy" },
+ { id: 3, src: image5, alt: "Modern classroom in Ai-Teg Academy" },
   { id: 4, src: image6, alt: "Spacious classroom with digital screen" },
   { id: 5, src: image7, alt: "Reception and waiting area" },
   { id: 6, src: image8, alt: "Administrative workspace and office" },
